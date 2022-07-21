@@ -10,11 +10,11 @@ function Home() {
   if (data) {
     posts = data.getPosts;
   }
-  console.log(posts);
-  console.log(data);
+  // console.log(posts);
+  // console.log(data);
   return (
     <Grid columns={3} >
-      <Grid.Row>
+      <Grid.Row className='page-title'>
         <h1>
           Recent Posts
         </h1>
@@ -25,7 +25,9 @@ function Home() {
             (
               posts &&
               posts.map(post => (
-                <PostCard key={post.id} post={post} />
+                <Grid.Column key={post.id} style={{ marginBottom: '20px' }}>
+                  <PostCard key={post.id} post={post} />
+                </Grid.Column>
               ))
             )
         }
@@ -35,7 +37,7 @@ function Home() {
 }
 
 const FETCH_POSTS_QUERY = gql`
-{
+query GetPosts {
   getPosts {
     id
     body
