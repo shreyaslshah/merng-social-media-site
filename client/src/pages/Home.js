@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client/react/hooks';
 import { Grid } from 'semantic-ui-react';
@@ -10,8 +10,7 @@ function Home() {
   if (data) {
     posts = data.getPosts;
   }
-  // console.log(posts);
-  // console.log(data);
+
   return (
     <Grid columns={3} >
       <Grid.Row className='page-title'>

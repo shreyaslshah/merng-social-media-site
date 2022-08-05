@@ -19,7 +19,7 @@ function PostCard({ post }) {
         <Image
           floated='right'
           size='mini'
-          src='https://pps.whatsapp.net/v/t61.24694-24/183330444_681043693215620_4231573595976245233_n.jpg?ccb=11-4&oh=01_AVwfnv1K9cZhCMaJE969LdizJaPeKeGPFC_E4WA0hHXiNg&oe=62E4B13E'
+          src='https://media-exp1.licdn.com/dms/image/C5603AQEM2DDbhmY7Ig/profile-displayphoto-shrink_200_200/0/1650983999584?e=1660176000&v=beta&t=n_ZdSqIIgk0FfpbiLcsB0AXEW1P2FeBBCcFTirdjuxU'
         />
         <Card.Header>{username}</Card.Header>
         <Card.Meta as={Link} to={`/posts/${id}`}>{moment(createdAt).fromNow()}</Card.Meta>
