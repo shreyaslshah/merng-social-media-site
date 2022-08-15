@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client/react/hooks';
 import { AuthContext } from '../context/auth';
 import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 function Login() {
   const context = useContext(AuthContext);
@@ -38,32 +39,35 @@ function Login() {
     loginUser();
   }
 
-  return (
-    <div className='form-container'>
-      <Form onSubmit={onSubmit} noValidate className={loading ? 'loading' : ''}>
-        <h1>Login</h1>
-        <Form.Input label='Username' placeholder='username' name='username' value={values.username} onChange={onChange} type='text' error={errors.username ? true : false} />
+  if (context.user) {
+    return <Navigate to={'/'} />
+  } else
+    return (
+      <div className='form-container'>
+        <Form onSubmit={onSubmit} noValidate className={loading ? 'loading' : ''}>
+          <h1>Login</h1>
+          <Form.Input label='Username' placeholder='username' name='username' value={values.username} onChange={onChange} type='text' error={errors.username ? true : false} />
 
-        <Form.Input label='Password' placeholder='password' name='password' value={values.password} onChange={onChange} type='password' error={errors.password ? true : false} />
+          <Form.Input label='Password' placeholder='password' name='password' value={values.password} onChange={onChange} type='password' error={errors.password ? true : false} />
 
-        <Button type='submit' primary>Login</Button>
-      </Form>
-      {
-        Object.keys(errors).length > 0 &&
-        (
-          <div className='ui error message'>
-            <ul className="list">
-              {
-                Object.keys(errors).map(function (key, index) {
-                  return (<li key={index}>{errors[key]}</li>)
-                })
-              }
-            </ul>
-          </div>
-        )
-      }
-    </div>
-  )
+          <Button type='submit' primary>Login</Button>
+        </Form>
+        {
+          Object.keys(errors).length > 0 &&
+          (
+            <div className='ui error message'>
+              <ul className="list">
+                {
+                  Object.keys(errors).map(function (key, index) {
+                    return (<li key={index}>{errors[key]}</li>)
+                  })
+                }
+              </ul>
+            </div>
+          )
+        }
+      </div>
+    )
 }
 
 const LOGIN_USER = gql`

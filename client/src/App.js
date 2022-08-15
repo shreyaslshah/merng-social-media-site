@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { Container } from "semantic-ui-react";
 import { AuthProvider } from "./context/auth";
+import SinglePost from "./pages/SinglePost";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/posts/:id" element={<SinglePost/>}/>
           </Routes>
         </Container>
       </BrowserRouter>
