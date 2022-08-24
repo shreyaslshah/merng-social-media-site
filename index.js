@@ -12,10 +12,14 @@ const server = new ApolloServer({
   }
 });
 
+const PORT = process.env.port || 4000;
+
 mongoose.connect('mongodb+srv://shreyaslshah:shreyasshah@cluster0.bakje.mongodb.net/Cluster0?retryWrites=true&w=majority', { useNewUrlParser: true })
   .then(() => {
     console.log('db connected');
-    return server.listen({ port: 4000 });
+    return server.listen({ port: PORT });
   }).then((res) => {
     console.log(`server running at ${res.url}`);
+  }).catch((error)=>{
+    console.log(error);
   });
