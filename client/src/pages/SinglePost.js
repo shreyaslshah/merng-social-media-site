@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import gql from 'graphql-tag';
 import { useQuery, useMutation } from '@apollo/client';
-import { Card, Form, Grid, Image } from 'semantic-ui-react';
+import { Card, Form, Grid, Image, Loader } from 'semantic-ui-react';
 import userImage from '../images/userImage.png'
 import moment from 'moment';
 import LikeButton from '../components/LikeButton';
@@ -43,7 +43,7 @@ function SinglePost() {
 
 
   return (loading ? (
-    <p>Loading Post...</p>
+    <Loader active inline='centered'>Loading Post</Loader>
   ) : (
     <Grid>
       <Grid.Row>
@@ -54,7 +54,7 @@ function SinglePost() {
             float='right'
           />
         </Grid.Column>
-        <Grid.Column width={10}>
+        <Grid.Column width={12}>
           <Card fluid>
             <Card.Content>
               <Card.Header>{post.username}</Card.Header>

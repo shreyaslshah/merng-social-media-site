@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button } from 'semantic-ui-react'
+import { Button, Popup } from 'semantic-ui-react'
 import gql from 'graphql-tag';
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth';
@@ -20,7 +20,7 @@ function LikeButton({ post: { likes, id } }) {
   }, [user, likes]);
 
   const [likePost] = useMutation(LIKE_POST_MUTATION, {
-    variables: {postId: id}
+    variables: { postId: id }
   })
 
   const basic = user ? (liked ? false : true) : true
@@ -28,16 +28,18 @@ function LikeButton({ post: { likes, id } }) {
   const path = user ? null : '/login'
 
   return (
-    <Button
-      onClick={likePost}
-      basic={basic}
-      size='tiny'
-      color='blue'
-      icon='heart'
-      label={{ color: 'blue', pointing: 'left', content: `${likes.length}` }}
-      as={link}
-      to={path}
-    />
+    <Popup size='tiny' content='like post' inverted trigger={
+      <Button
+        onClick={likePost}
+        basic={basic}
+        size='tiny'
+        color='blue'
+        icon='heart'
+        label={{ color: 'blue', pointing: 'left', content: `${likes.length}` }}
+        as={link}
+        to={path}
+      />
+    } />
   )
 }
 

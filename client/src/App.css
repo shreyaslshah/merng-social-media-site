@@ -50,4 +50,14 @@ body {
   .form-container{
     width: 75%;
   }
+
+  .mobileContainer{
+    max-width: 95% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .homeHeading{
+    margin-top: 20px !important;
+  }
 }
